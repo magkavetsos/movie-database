@@ -48,7 +48,7 @@ export async function editMovie(formData, id) {
   } catch (error) {
     console.error("Error editing movie:", error);
     isErrorHandled = true;
-    throw error;
+    throw new Error("Error editing movie. Please try again");
   } finally {
     if (!isErrorHandled) {
       redirect("/");

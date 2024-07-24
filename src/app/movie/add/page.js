@@ -6,17 +6,7 @@ import { redirect } from "next/navigation";
 export default function Add() {
   const onSubmit = async (data) => {
     "use server";
-    let isErrorHandled = false;
-    try {
-      await addMovie(data);
-    } catch (error) {
-      console.error("Failed to add movie:", error);
-      isErrorHandled = true;
-    } finally {
-      if (!isErrorHandled) {
-        redirect("/");
-      }
-    }
+    await addMovie(data);
   };
 
   return (
