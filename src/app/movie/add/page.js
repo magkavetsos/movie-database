@@ -1,8 +1,7 @@
 import Heading from "../../../app/_components/Heading/Heading";
-import Form from "../../../components/Form";
+import Form from "../../../components/Form/Form";
 import { addMovie } from "../../../actions/addMovie";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 export default function Add() {
   const onSubmit = async (data) => {
@@ -13,10 +12,8 @@ export default function Add() {
     } catch (error) {
       console.error("Failed to add movie:", error);
       isErrorHandled = true;
-      // TODO: Handle the error appropriately (e.g., show a message to the user)
     } finally {
       if (!isErrorHandled) {
-        revalidatePath("/");
         redirect("/");
       }
     }

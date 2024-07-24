@@ -1,6 +1,7 @@
 "use server";
-import { movieSchema } from "./validation";
+import { movieSchema } from "./validation/validation";
 import { formDataToObject } from "../utils/utils";
+import { revalidatePath } from "next/cache";
 
 export async function addMovie(formData) {
   // Validate the form data
@@ -36,6 +37,7 @@ export async function addMovie(formData) {
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
+    revalidatePath("/");
     return response;
   } catch (error) {
     console.error("Error adding movie:", error);

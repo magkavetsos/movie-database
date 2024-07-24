@@ -8,6 +8,16 @@ async function getMovieById(id) {
   return response.json();
 }
 
+export async function generateStaticParams() {
+  const movies = await fetch("http://127.0.0.1:8000/movies").then((res) =>
+    res.json()
+  );
+
+  return movies.map((movie) => ({
+    id: movie.id.toString(),
+  }));
+}
+
 export async function generateMetadata({ params }) {
   const id = params.id;
   const movie = await getMovieById(id);
@@ -43,6 +53,6 @@ export default async function Movie({
     );
   } catch (e) {
     console.error(e);
-    <div>Something went wrong. Try again</div>;
+    throw new Error("Movie retrieval went wrong. Please try again later.");
   }
 }

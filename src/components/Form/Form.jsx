@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./form.module.css";
-import { getToday } from "../utils/utils";
+import { getToday } from "../../utils/utils";
 
 export default function Form({ action, movie }) {
   const {

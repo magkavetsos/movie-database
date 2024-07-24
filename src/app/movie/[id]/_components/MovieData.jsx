@@ -1,9 +1,8 @@
-import Form from "../../../../components/Form";
+import Form from "../../../../components/Form/Form";
 import Content from "./Content";
 import { editMovie } from "../../../../actions/editMovie";
 import styles from "./movieData.module.css";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 export default function MovieData({ editable, movie }) {
   const onSubmit = async (data) => {
@@ -16,8 +15,6 @@ export default function MovieData({ editable, movie }) {
       isErrorHandled = true;
     } finally {
       if (!isErrorHandled) {
-        revalidatePath("/");
-        revalidatePath(`/movie/${movie.id}`);
         redirect("/");
       }
     }

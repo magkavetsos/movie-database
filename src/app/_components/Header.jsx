@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import StyledLink from "../../components/StyledLink";
 
 export default function Header() {
   return (
@@ -11,7 +10,6 @@ export default function Header() {
       <Link href="/movie/add">
         <button>ADD MOVIE</button>
       </Link>
-      {/* <StyledLink href="/movie/add">ADD MOVIE</StyledLink> TODO: add if there is time */}
     </header>
   );
 }
