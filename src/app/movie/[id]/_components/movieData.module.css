@@ -1,0 +1,24 @@
+.formContainer {
+  width: 100%;
+}
+.movieContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #1f1c18;
+}
+.movieContainer > div {
+  padding: 10px 0;
+}
+.movieContainer > div span {
+  font-weight: 500;
+  color: #e4d804;
+}
+.movieContainer button {
+  margin: 20px auto 0;
+}

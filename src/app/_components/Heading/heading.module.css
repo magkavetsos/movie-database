@@ -1,0 +1,15 @@
+.heading span {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.heading h2 {
+  font-size: 36px;
+}
+.heading {
+  margin-bottom: 20px;
+  padding: 50px;
+  padding-bottom: 0;
+}

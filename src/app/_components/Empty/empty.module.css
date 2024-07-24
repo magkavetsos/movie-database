@@ -1,0 +1,14 @@
+.empty {
+  text-align: center;
+  margin: 0 auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #1f1c18;
+  color: white;
+  border-radius: 8px;
+}
+.empty button {
+  margin: 40px auto 0;
+}

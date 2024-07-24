@@ -1,0 +1,7 @@
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px auto;
+}

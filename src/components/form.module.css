@@ -1,0 +1,56 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: #1f1c18;
+}
+.formContainer input,
+.formContainer textarea,
+.formContainer input[type="file"] {
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #1f1c18;
+  color: white;
+}
+.errormessage {
+  color: #e4d804;
+  margin-top: 6px;
+  font-size: 14px;
+}
+.formContainer button {
+  margin: 20px auto 0;
+}
+.formContainer label {
+  color: white;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+.formContainer label:first-of-type {
+  margin-top: 0;
+}
+.fileNames ul {
+  list-style-type: none;
+  padding: 0;
+  color: white;
+  margin-top: 6px;
+}
+
+.fileNames li {
+  margin-bottom: 5px;
+}
+.fileNames a {
+  color: #e4d804;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+}
+.fileNames input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5); /* Adjust the value as needed to change color */
+  color: white;
+}
