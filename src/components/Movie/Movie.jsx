@@ -30,7 +30,6 @@ export default function Movie({ movie }) {
           width={300}
           height={450}
           alt="movie_name"
-          style={{ cursor: "pointer" }}
         />
       </Link>
       <MovieActions movie={movie} />

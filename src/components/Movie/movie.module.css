@@ -54,6 +54,7 @@
 }
 .movieImage {
   position: relative;
+  cursor: pointer;
 }
 .actions {
   position: absolute;

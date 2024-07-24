@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <Link href="/">
-        <Image src="/logo.png" width={96} height={29} alt="logo" />
+        <Image src="/logo.png" width={96} height={29} alt="logo" priority />
       </Link>
       <Link href="/movie/add">
         <button>ADD MOVIE</button>

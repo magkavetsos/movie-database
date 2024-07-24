@@ -2,23 +2,25 @@
 import { movieSchema } from "./validation/validation";
 import { formDataToObject } from "../utils/utils";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function editMovie(formData, id) {
-  // Validate the form data
-  const data = formDataToObject(formData);
-  const parsedData = movieSchema.safeParse(data);
-
-  if (!parsedData.success) {
-    // Handle validation errors
-    const errorMessages = parsedData.error.errors
-      .map((err) => err.message)
-      .join(", ");
-    throw new Error(`Validation error: ${errorMessages}`);
-  }
-
-  const { title, description, releaseDate } = parsedData.data;
-
+  let isErrorHandled = false;
   try {
+    // Validate the form data
+    const data = formDataToObject(formData);
+    const parsedData = movieSchema.safeParse(data);
+
+    if (!parsedData.success) {
+      // Handle validation errors
+      const errorMessages = parsedData.error.errors
+        .map((err) => err.message)
+        .join(", ");
+      throw new Error(`Validation error: ${errorMessages}`);
+    }
+
+    const { title, description, releaseDate } = parsedData.data;
+
     const response = await fetch(`http://127.0.0.1:8000/movies/${id}`, {
       method: "PUT",
       headers: {
@@ -42,6 +44,11 @@ export async function editMovie(formData, id) {
     return response.json();
   } catch (error) {
     console.error("Error editing movie:", error);
+    isErrorHandled = true;
     throw error;
+  } finally {
+    if (!isErrorHandled) {
+      redirect("/");
+    }
   }
 }
