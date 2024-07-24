@@ -22,13 +22,13 @@ export default function Form({ action, movie }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFileChange = async (e) => {
+  const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     if (!files || files.length === 0) {
       return;
     }
     let base64Array = [];
-    await files.forEach((f) => {
+    files.forEach((f) => {
       const reader = new FileReader();
       reader.onload = function (e) {
         if (e.target && e.target.result) {
