@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./form.module.css";
-import { getToday } from "../../utils/utils";
+import { getToday, isDateBeforeOrEqualToday } from "../../utils/utils";
 
 export default function Form({ action, movie }) {
   const {
@@ -20,6 +20,7 @@ export default function Form({ action, movie }) {
       : { releaseDate: getToday() },
   });
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -27,14 +28,27 @@ export default function Form({ action, movie }) {
     clearErrors("file");
   };
 
-  const onFormSubmit = (_, e) => {
+  const validateDate = (value) => {
+    return (
+      isDateBeforeOrEqualToday(value) || "Event date must be today or earlier"
+    );
+  };
+
+  const onFormSubmit = async (_, e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData(e.target);
-    action(formData);
+    try {
+      await action(formData);
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <form
-      action={action}
       onSubmit={handleSubmit(onFormSubmit)}
       className={styles.formContainer}
     >
@@ -70,8 +84,14 @@ export default function Form({ action, movie }) {
       <label>Release Date</label>
       <input
         type="date"
-        {...register("releaseDate", { required: "Event date is required" })}
+        {...register("releaseDate", {
+          required: "Event date is required",
+          validate: validateDate,
+        })}
       />
+      {errors.releaseDate && (
+        <div className={styles.errormessage}>{errors.releaseDate.message}</div>
+      )}
 
       <label>Upload File</label>
       <input
@@ -100,7 +120,9 @@ export default function Form({ action, movie }) {
           </ul>
         )}
       </div>
-      <button type="submit">SUBMIT</button>
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "loading..." : "SUBMIT"}
+      </button>
     </form>
   );
 }

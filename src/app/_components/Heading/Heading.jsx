@@ -1,7 +1,7 @@
 import styles from "./heading.module.css";
 
 export default function Heading({
-  title = "Upcoming Movies",
+  title = "Available Movies",
   highlighted = "ONLINE STREAMING",
 }) {
   return (

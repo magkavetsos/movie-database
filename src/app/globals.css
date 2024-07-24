@@ -31,6 +31,15 @@ button:hover {
   color: #1f1c18;
 }
 
+button:disabled {
+  background: #ddd;
+  color: #aaa;
+  border-color: #ccc;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: none;
+}
+
 header {
   width: 100%;
   top: 0;
