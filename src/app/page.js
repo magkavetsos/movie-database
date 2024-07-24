@@ -4,7 +4,7 @@ import Empty from "./_components/Empty/Empty";
 import Heading from "./_components/Heading/Heading";
 
 async function getMovies() {
-  const response = await fetch("http://127.0.0.1:8000/movies");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies`);
   return response.json();
 }
 

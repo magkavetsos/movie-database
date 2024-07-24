@@ -4,13 +4,15 @@ import styles from "./page.module.css";
 import MovieData from "./_components/MovieData";
 
 async function getMovieById(id) {
-  const response = await fetch(`http://127.0.0.1:8000/movies/${id}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/movies/${id}`
+  );
   return response.json();
 }
 
 export async function generateStaticParams() {
-  const movies = await fetch("http://127.0.0.1:8000/movies").then((res) =>
-    res.json()
+  const movies = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies`).then(
+    (res) => res.json()
   );
 
   return movies.map((movie) => ({

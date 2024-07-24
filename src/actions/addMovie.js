@@ -19,7 +19,7 @@ export async function addMovie(formData) {
   const { title, description, releaseDate } = parsedData.data;
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/movies", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies`, {
       method: "POST",
       headers: {
         accept: "application/json",

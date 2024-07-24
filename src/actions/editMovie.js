@@ -21,20 +21,23 @@ export async function editMovie(formData, id) {
 
     const { title, description, releaseDate } = parsedData.data;
 
-    const response = await fetch(`http://127.0.0.1:8000/movies/${id}`, {
-      method: "PUT",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        title,
-        description,
-        release_date: releaseDate,
-        images: ["https://picsum.photos/200/300"],
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/movies/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          title,
+          description,
+          release_date: releaseDate,
+          images: ["https://picsum.photos/200/300"],
+        }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);

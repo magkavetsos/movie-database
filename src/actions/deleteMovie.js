@@ -8,13 +8,16 @@ export async function deleteMovie(id) {
   }
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/movies/${id}`, {
-      method: "DELETE",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/movies/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
