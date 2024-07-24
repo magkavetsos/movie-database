@@ -20,3 +20,11 @@ export const isDateBeforeOrEqualToday = (dateString) => {
   today.setHours(0, 0, 0, 0); // Ensure we compare dates without considering time
   return selectedDate <= today;
 };
+
+export const base64ToImageUrl = (base64String) => {
+  const mimeType = "image/png";
+  if (!base64String) {
+    throw new Error("Base64 string is required");
+  }
+  return `data:${mimeType};base64,${base64String}`;
+};

@@ -4,9 +4,9 @@ import { editMovie } from "../../../../actions/editMovie";
 import styles from "./movieData.module.css";
 
 export default function MovieData({ editable, movie }) {
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, images) => {
     "use server";
-    await editMovie(data, movie.id);
+    await editMovie(data, movie.id, images);
   };
 
   return (

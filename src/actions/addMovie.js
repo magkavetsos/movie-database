@@ -4,7 +4,7 @@ import { formDataToObject } from "../utils/utils";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function addMovie(formData) {
+export async function addMovie(formData, images) {
   let isErrorHandled = false;
   try {
     // Validate the form data
@@ -17,6 +17,10 @@ export async function addMovie(formData) {
         .map((err) => err.message)
         .join(", ");
       throw new Error(`Validation error: ${errorMessages}`);
+    }
+
+    if (!images || images.length === 0) {
+      throw new Error(`Validation error: No images provided.`);
     }
 
     const { title, description, releaseDate } = parsedData.data;
@@ -32,7 +36,7 @@ export async function addMovie(formData) {
         title,
         description,
         release_date: releaseDate,
-        images: ["https://picsum.photos/200/300"],
+        images: images,
       }),
     });
 

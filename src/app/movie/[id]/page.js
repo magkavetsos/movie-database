@@ -2,6 +2,7 @@ import Heading from "../../../app/_components/Heading/Heading";
 import Image from "next/image";
 import styles from "./page.module.css";
 import MovieData from "./_components/MovieData";
+import { base64ToImageUrl } from "../../../utils/utils";
 
 async function getMovieById(id) {
   const response = await fetch(
@@ -43,7 +44,7 @@ export default async function Movie({
         <div className={styles.movieDetails}>
           <div>
             <Image
-              src={movie.images[0]}
+              src={base64ToImageUrl(movie.images[0])}
               width={300}
               height={450}
               alt={movie.title}

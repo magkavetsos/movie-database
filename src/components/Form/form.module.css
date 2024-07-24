@@ -39,23 +39,8 @@
 .formContainer label:first-of-type {
   margin-top: 0;
 }
-.fileNames ul {
-  list-style-type: none;
-  padding: 0;
+.formContainer input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
   color: white;
-  margin-top: 6px;
-}
-
-.fileNames li {
-  margin-bottom: 5px;
-}
-.fileNames a {
-  color: #e4d804;
-  text-align: right;
-  font-weight: bold;
   cursor: pointer;
-}
-.fileNames input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5); /* Adjust the value as needed to change color */
-  color: white;
 }

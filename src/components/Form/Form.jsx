@@ -22,9 +22,23 @@ export default function Form({ action, movie }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
-    setSelectedFiles(files);
+    if (!files || files.length === 0) {
+      return;
+    }
+    let base64Array = [];
+    await files.forEach((f) => {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        if (e.target && e.target.result) {
+          const base64String = e.target.result.split(",")[1];
+          base64Array.push(base64String);
+        }
+      };
+      reader.readAsDataURL(f);
+    });
+    setSelectedFiles(base64Array);
     clearErrors("file");
   };
 
@@ -39,7 +53,7 @@ export default function Form({ action, movie }) {
     setIsSubmitting(true);
     const formData = new FormData(e.target);
     try {
-      await action(formData);
+      await action(formData, selectedFiles);
     } catch (error) {
       console.error("Failed to submit form:", error);
     } finally {
@@ -97,29 +111,27 @@ export default function Form({ action, movie }) {
       <input
         type="file"
         multiple
+        accept="image/*"
         {...register("file", {
           required: "At least one file is required",
+          validate: {
+            filesRequired: (files) =>
+              files.length > 0 || "At least one file is required",
+            validTypes: (files) => {
+              for (const file of files) {
+                if (!["image/jpeg", "image/png"].includes(file.type)) {
+                  return "Only JPG and PNG images are allowed";
+                }
+              }
+              return true;
+            },
+          },
         })}
         onChange={handleFileChange}
       />
       {errors.file && (
         <div className={styles.errormessage}>{errors.file.message}</div>
       )}
-      <div className={styles.fileNames}>
-        {selectedFiles.length > 0 && (
-          <ul>
-            {selectedFiles.map((file, index) => (
-              <React.Fragment key={index}>
-                <li key={`li-${index}`}>
-                  {file.name.length > 25
-                    ? `${file.name.substring(0, 25)}...`
-                    : file.name}
-                </li>
-              </React.Fragment>
-            ))}
-          </ul>
-        )}
-      </div>
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "loading..." : "SUBMIT"}
       </button>

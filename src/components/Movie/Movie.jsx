@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ThumbsUp, Clock2 } from "lucide-react";
 import styles from "./movie.module.css";
-import { getYearFromDate } from "../../utils/utils";
+import { getYearFromDate, base64ToImageUrl } from "../../utils/utils";
 import MovieActions from "./MovieActions";
 import Link from "next/link";
 
@@ -26,7 +26,7 @@ export default function Movie({ movie }) {
     <div className={styles.movieImage}>
       <Link href={`/movie/${movie.id}`}>
         <Image
-          src={movie.images[0]}
+          src={base64ToImageUrl(movie.images[0])}
           width={300}
           height={450}
           alt="movie_name"
