@@ -26,7 +26,7 @@ export async function addMovie(formData) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: Date.now(), // if ID does not auto-increment from server
+        id: Date.now(), // ID does not auto-increment from server
         title,
         description,
         release_date: releaseDate,
