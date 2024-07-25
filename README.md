@@ -77,7 +77,16 @@ The API for the purposes of this project contains the following endpoints, so yo
 
 This application provides several actions that users can perform related to movies. Here’s a brief overview of each action:
 
+<b>View Movie details</b>
+
+Users can see details of a movie. To do this:
+<ul>
+  <li>Click the title or the image of a movie in homepage</li>
+  <li>You will redirect to movie details page, with option to edit the details also.</li>
+</ul>
+
 <b>Add a Movie</b>
+
 Users can add a new movie to the system. To do this:
 <ul>
   <li>Click Add Movie Button at homepage</li>
@@ -85,13 +94,15 @@ Users can add a new movie to the system. To do this:
 </ul>
 
 <b>Edit a Movie</b>
+
 Users can edit the details of an existing movie. To do this:
 <ul>
   <li>Click the edit icon on hover of a movie entry at homepage OR from the specific movie page details click the button "EDIT THIS MOVIE"</li>
   <li>Fill out the required fields and submit the form to make changes to this movie in the database</li>
 </ul>
 
-<b>Edit a Movie</b>
+<b>Delete a Movie</b>
+
 Users can delete a movie from the system. To do this:
 <ul>
   <li>Click the delete icon on hover of a movie entry at homepage</li>
@@ -99,6 +110,7 @@ Users can delete a movie from the system. To do this:
 </ul>
 
 <b>Add to Favorites</b>
+
 Users can add or remove movies from their favorites list. To do this:
 <ul>
   <li>Click the favorite icon on hover of a movie entry at homepage</li>
