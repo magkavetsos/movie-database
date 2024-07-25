@@ -34,7 +34,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ### NOTE
 
-This project is separated from the backend, completely agnostic to each other. To fully run the project you'll have to setup and run locally a server that exposes a basic RESTful Web API. Then configure the .env file with the host url (e.g 127.0.0.1) & the port taht server is listening to (e.g :8000).
+This project is separated from the backend, completely agnostic to each other. To fully run the project you'll have to setup and run locally a server that exposes a basic RESTful Web API. Then configure the .env file with the host url (e.g 127.0.0.1) & the port that server is listening to (e.g :8000).
 
 The API for the purposes of this project contains the following endpoints, so you'll have to create yours accordingly:
 
