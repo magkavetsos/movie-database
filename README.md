@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Description
 
+This project is about the front-end UI for a movie database management system. One should be able to browse, add, delete & edit movie entries from this database.
+
 This project is built using Next.js 14, offering a robust framework for building modern web applications with server-side rendering (SSR) and static site generation (SSG). Our application is designed to be fast, efficient, and SEO-friendly.
 
 ## Getting Started
@@ -70,6 +72,38 @@ The API for the purposes of this project contains the following endpoints, so yo
 ├── package.json         # NPM package configuration
 └── README.md
 ```
+
+## User Actions
+
+This application provides several actions that users can perform related to movies. Here’s a brief overview of each action:
+
+<b>Add a Movie</b>
+Users can add a new movie to the system. To do this:
+<ul>
+  <li>Click Add Movie Button at homepage</li>
+  <li>Fill out the required fields and submit the form to add the movie to the database</li>
+</ul>
+
+<b>Edit a Movie</b>
+Users can edit the details of an existing movie. To do this:
+<ul>
+  <li>Click the edit icon on hover of a movie entry at homepage OR from the specific movie page details click the button "EDIT THIS MOVIE"</li>
+  <li>Fill out the required fields and submit the form to make changes to this movie in the database</li>
+</ul>
+
+<b>Edit a Movie</b>
+Users can delete a movie from the system. To do this:
+<ul>
+  <li>Click the delete icon on hover of a movie entry at homepage</li>
+  <li>Homepage then revalidates with the rest of movies in the database</li>
+</ul>
+
+<b>Add to Favorites</b>
+Users can add or remove movies from their favorites list. To do this:
+<ul>
+  <li>Click the favorite icon on hover of a movie entry at homepage</li>
+  <li>The movie will either saved in your favorites list or removed from there. This information stored in a storage object using window's "localStorage" </li>
+</ul>
 
 ## Configuration
 
