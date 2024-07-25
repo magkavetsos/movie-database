@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Description
 
-This project is built using Next.js 14, offering a robust framework for building modern web applications with server-side rendering (SSR) and static site generation (SSG). Our application is designed to be fast, efficient, and SEO-friendly
+This project is built using Next.js 14, offering a robust framework for building modern web applications with server-side rendering (SSR) and static site generation (SSG). Our application is designed to be fast, efficient, and SEO-friendly.
 
 ## Getting Started
 
@@ -29,6 +29,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `src/app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+### NOTE
+
+This project is separated from the backend, completely agnostic to each other. To fully run the project you'll have to setup and run locally a server that exposes a basic RESTful Web API. Then configure the .env file with the API url.
+
+The API for the purposes of this project contains the following endpoints, so you'll have to create yours accordingly:
+
+<ul>
+<li><b>GET /movies:</b> Retrieves all movies</li>
+<li><b>GET /movies/{id}:</b>  Retrieves a specific movie by its ID.</li>
+<li><b>PUT /movies/{id}:</b> Updates a specific movie by its ID.</li>
+<li><b>DELETE /movies/{id}:</b> Deletes a specific movie by its ID.</li>
+<li><b>POST /movies:</b>  Creates a new movie.</li>
+</ul>
 
 ## Basic Structure
 
